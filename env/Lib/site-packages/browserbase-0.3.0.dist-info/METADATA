@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: browserbase
+Version: 0.3.0
+Summary: Browserbase Python SDK
+Author-email: Browserbase <support@browserbase.com>
+Project-URL: Homepage, https://browserbase.com
+Project-URL: Source, https://github.com/browserbase/python-sdk
+Project-URL: Issues, https://github.com/browserbase/python-sdk/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: playwright >=1.43.0
+Requires-Dist: pydantic >=2.7.1
+Requires-Dist: httpx >=0.27.0
+
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="logo/dark.svg"/>
+        <img alt="Browserbase logo" src="logo/light.svg" width="300" />
+    </picture>
+</p>
+
+<p align="center">
+    <a href="https://docs.browserbase.com">Documentation</a>
+    <span>&nbsp;·&nbsp;</span>
+    <a href="https://www.browserbase.com/playground">Playground</a>
+</p>
+<br/>
+
+## Browserbase Python SDK
+
+[Browserbase](https://browserbase.com) is a serverless platform for running headless browsers, it offers advanced debugging, session recordings, stealth mode, integrated proxies and captcha solving.
+
+## Installation and setup
+
+- Get an API key from [browserbase.com](https://browserbase.com) and set it in environment variables (`BROWSERBASE_API_KEY`).
+- Install the required dependencies:
+
+```sh
+pip install browserbase
+```
+
+## Usage
+
+```py
+from browserbase import Browserbase
+
+# Init the SDK
+browserbase = Browserbase(os.environ["BROWSERBASE_API_KEY"])
+
+# Load a webpage
+result = browserbase.load("https://example.com")
+
+# Load multiple webpages (returns iterator)
+result = browserbase.load(["https://example.com"])
+
+# Text-only mode
+result = browserbase.load("https://example.com", text_content=True)
+
+# Screenshot (returns bytes)
+result = browserbase.screenshot("https://example.com", full_page=True)
+```
